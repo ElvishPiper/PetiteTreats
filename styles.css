@@ -287,7 +287,7 @@ fieldset{
 .no-margin{margin:0;}
 
 /*  ===Media Query===   */
-@media (max-width:860px){
+@media screen and (max-width:860px){
 	
 .banner{min-height:5rem;}
 
@@ -303,8 +303,8 @@ fieldset{
 }
 }
 
-/* Mobile display*/
-@media screen and (max-device-width: 480px){
+/* Small display (includes mobile devices)*/
+@media screen and (max-width: 480px){
 
 html{font-size:14px;}
 
@@ -330,10 +330,6 @@ nav li{
 /*Menu Grid*/
 .content.menu-grid{grid-template-columns: repeat(auto-fill, minmax(auto, 100%));}
 
-.hover-container .overlay{opacity: 0.8;}
-
-.hover-container a{color:#f3d893;}
-
 input[type=text], input[type=email]{width:60%;}
 
 footer >div{margin: 0 1em;}
@@ -342,4 +338,9 @@ footer div p{
 	display:inline-block;
 	margin: 0 0.2em;
 }
+}
+/* Mobile devices with no hover*/
+@media (hover:none) and (pointer: coarse) { 
+.hover-container .overlay{opacity: 0.7;}
+.hover-container a{color:#f3d893;}
 }
