@@ -189,14 +189,12 @@ nav li{
 }
 /*=======================*/
 
-/*  ===Body Content Main Grid ( 3 x 3 )===   */
+/*  ===Body Content Main Grid ( Dynamic, full screen = 3x3 )===   */
 
 .content.menu-grid{
 	display:grid;
-	grid-template:
-		"1 2 3" 20em
-		"4 5 6" 20em
-		/1fr 1fr 1fr;
+	grid-template-columns: repeat(auto-fill, minmax(25em, 1fr));
+	grid-auto-rows: auto;
 	gap:1em;
 }
 
@@ -209,9 +207,8 @@ nav li{
 	box-shadow: 0.5rem 0.5rem gray;
 	flex-wrap:wrap;
 }
-.flex > div{
-	flex: 1 1 500px;
-}
+.flex > div{flex: 1 1 500px;}
+
 /*=======================*/
 
 footer{
@@ -219,12 +216,13 @@ footer{
 	grid-column: 1/-1; 
 	
 	background-color:#578084;
-	color: black;
-	max-width:100%;
+	
 	display:flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: space-evenly;
 }
+footer > div{margin: 0 3em;}
+
 button{
 	font-family: 'Raleway', Garamond, serif;
 	font-size:1.2rem;
@@ -254,8 +252,7 @@ input{
 	margin: 0.8em 0;
 }
 input[type=text], input[type=email]{
-
-	width:30%;
+	width:40%;
 	padding: 0.5em 1em;
 	border:none;
 	background-color: #f3d893;
@@ -281,8 +278,8 @@ fieldset{
 	justify-content:center;
 	align-items:center;
 }
-
 .hover-container:hover .overlay{opacity: 0.8;}
+
 /*=======================*/
 
 .vert-center{align-self:center;}
@@ -291,12 +288,23 @@ fieldset{
 
 /*  ===Media Query===   */
 @media (max-width:860px){
+	
 .banner{min-height:5rem;}
+
 .index-content{grid-row: 2/ 3;}
+
+.content.index-grid{
+	grid-template-columns: 1fr;
+	grid-template-areas:
+	"specials specials"
+	"1 2"
+	"3 4"
+	"5 6";
+}
 }
 
 /* Mobile display*/
-@media screen and (max-width: 480px) {
+@media screen and (max-device-width: 480px){
 
 html{font-size:14px;}
 
@@ -306,14 +314,10 @@ nav li{
 	padding: 0.2em 0.2em;
 }
 
-.content{
-	width: 95%;
-}
+.content{width: 95%;}
 
 /*Home Page Grid*/
 .content.index-grid{
-	grid-auto-rows:auto;
-	grid-template-columns: 1fr;
 	grid-template-areas:
 	"specials"
 	"1"
@@ -323,5 +327,19 @@ nav li{
 	"5"
 	"6";
 }
+/*Menu Grid*/
+.content.menu-grid{grid-template-columns: repeat(auto-fill, minmax(auto, 100%));}
 
+.hover-container .overlay{opacity: 0.8;}
+
+.hover-container a{color:#f3d893;}
+
+input[type=text], input[type=email]{width:60%;}
+
+footer >div{margin: 0 1em;}
+
+footer div p{
+	display:inline-block;
+	margin: 0 0.2em;
+}
 }
